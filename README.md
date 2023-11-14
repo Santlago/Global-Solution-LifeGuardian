@@ -31,7 +31,7 @@ Repositório dedicado ao desenvolvimento da nosso Global Solution do 2º semestr
 </ul>
 
 ### Contribuidores
-Breno Santiago @Santlago
+Breno Santiago [@Santlago](https://github.com/Santlago)
 Daniel Araújo [@DanielAraujoFaria]
 Francineldo Luan [@FrancineldoLuan]
 Mariana Trentino [@]

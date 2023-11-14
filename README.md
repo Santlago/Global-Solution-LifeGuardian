@@ -31,12 +31,11 @@ Repositório dedicado ao desenvolvimento da nosso Global Solution do 2º semestr
 </ul>
 
 ### Contribuidores
-<ul>
-    <li>Breno Santiago [@Santlago](https://github.com/Santlago)</li>
-    <li>Daniel Araújo [@DanielAraujoFaria](https://github.com/DanielAraujoFaria)</li>
-    <li>Francineldo Luan [@FrancineldoLuan](https://github.com/FrancineldoLuan)</li>
-    <li>Mariana Trentino [@]</li>
-    <li>Vitória Camargo [@VitoriaMdeCamargo](https://github.com/VitoriaMdeCamargo)</li>
-</ul>
+- Breno Santiago [@Santlago](https://github.com/Santlago)
+- Daniel Araújo [@DanielAraujoFaria](https://github.com/DanielAraujoFaria)
+- Francineldo Luan [@FrancineldoLuan](https://github.com/FrancineldoLuan)
+- Mariana Trentino [GitHub Username](https://github.com/replace_with_mariana_github_username)
+- Vitória Camargo [@VitoriaMdeCamargo](https://github.com/VitoriaMdeCamargo)
+
 
 <p>Agradecemos antecipadamente por seu interesse em contribuir para o projeto Primeiros Socorros Maternidade. Juntos, podemos fazer a diferença na promoção da segurança e saúde das crianças.</p>

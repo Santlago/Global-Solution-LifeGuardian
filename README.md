@@ -34,7 +34,7 @@ Repositório dedicado ao desenvolvimento da nosso Global Solution do 2º semestr
 - [@Santlago](https://github.com/Santlago)
 - [@DanielAraujoFaria](https://github.com/DanielAraujoFaria)
 - [@FrancineldoLuan](https://github.com/FrancineldoLuan)
-- [GitHub Username](https://github.com/replace_with_mariana_github_username)
+- [@MarianaAlbano](https://github.com/mariialbano)
 - [@VitoriaMdeCamargo](https://github.com/VitoriaMdeCamargo)
 
 

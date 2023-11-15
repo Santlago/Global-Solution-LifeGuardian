@@ -21,6 +21,7 @@ Repositório dedicado ao desenvolvimento da nosso Global Solution do 2º semestr
   <li><b>Instruções Detalhadas:</b> Forneça passo a passo ilustrado com imagens e descrições sobre os procedimentos de primeiros socorros.</li>
   <li><b>Busca por Situações de Emergência:</b> Permita aos usuários encontrar rapidamente informações relevantes para a situação específica que estão enfrentando.</li>
   <li><b>Conteúdo Atualizado:</b> Mantenha o conteúdo atualizado com as diretrizes mais recentes de organizações de saúde confiáveis.</li>
+  <li><b>Medidas Preventivas:</b> De acordo com as informações fornecidas pelos pais sobre seus filhos vamos fazer recomendações de medidas preventivas.</li>
 </ol>
 
 ### Tecnologias Utilizadas

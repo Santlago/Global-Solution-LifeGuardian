@@ -30,6 +30,11 @@ Repositório dedicado ao desenvolvimento da nosso Global Solution do 2º semestr
     <li>Banco de Dados: Oracle SQL</li>
 </ul>
 
+## Especificações do site
+
+### Paleta de cores do projeto
+![Paleta de cores](<Paleta de cores.png>)
+
 ### Contribuidores
 - [@Santlago](https://github.com/Santlago)
 - [@DanielAraujoFaria](https://github.com/DanielAraujoFaria)

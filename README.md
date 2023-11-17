@@ -30,10 +30,9 @@ Repositório dedicado ao desenvolvimento da nosso Global Solution do 2º semestr
     <li>Banco de Dados: Oracle SQL</li>
 </ul>
 
-## Especificações do site
+## Especificações do projeto
 
-### Paleta de cores do projeto
-![Paleta de cores](<Paleta de cores.png>)
+![Paleta de cores](<visual-identity\logo\life-guardian-brand-zip-file\BrandBoard.png>)
 
 ### Contribuidores
 - [@Santlago](https://github.com/Santlago)

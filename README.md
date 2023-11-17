@@ -32,7 +32,7 @@ Repositório dedicado ao desenvolvimento da nosso Global Solution do 2º semestr
 
 ## Especificações do projeto
 
-![Paleta de cores](<visual-identity\logo\life-guardian-brand-zip-file\BrandBoard.png>)
+![Paleta de cores](<visual-identity/logo/life-guardian-brand-zip-file/BrandBoard.png>)
 
 ### Contribuidores
 - [@Santlago](https://github.com/Santlago)

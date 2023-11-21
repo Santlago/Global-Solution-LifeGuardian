@@ -42,4 +42,4 @@ Repositório dedicado ao desenvolvimento da nosso Global Solution do 2º semestr
 - [@VitoriaMdeCamargo](https://github.com/VitoriaMdeCamargo)
 
 
-<p>Agradecemos antecipadamente por seu interesse em contribuir para o projeto Primeiros Socorros Maternidade. Juntos, podemos fazer a diferença na promoção da segurança e saúde das crianças.</p>
+<p>Agradecemos antecipadamente por seu interesse em contribuir para o projeto Life Guardian. Juntos, podemos fazer a diferença na promoção da segurança e saúde das crianças.</p>

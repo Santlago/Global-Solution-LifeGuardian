@@ -1,0 +1,6 @@
+drop table gs_conteudo;
+drop table gs_medico;
+drop table gs_endereco;
+drop table gs_pessoa;
+drop table gs_usuario;
+drop table gs_ticket;

@@ -11,16 +11,16 @@
 
 CREATE TABLE gs_conteudo (
     conteudo_id NUMBER(5) NOT NULL,
-    medico_crm  VARCHAR2(20) NOT NULL,
+    medico_crm  VARCHAR2(20),
     image       VARCHAR2(80) NOT NULL,
-    text        VARCHAR2(8000) NOT NULL
+    text        CLOB NOT NULL
 );
 
 ALTER TABLE gs_conteudo ADD CONSTRAINT conteudo_pk PRIMARY KEY ( conteudo_id );
 
 CREATE TABLE gs_endereco (
     endereco_id      NUMBER(5) NOT NULL,
-    pessoa_pessoa_id NUMBER(5) NOT NULL,
+    PESSOA_ID NUMBER(5) NOT NULL,
     cep              VARCHAR2(10) NOT NULL,
     rua              VARCHAR2(80) NOT NULL,
     numero           VARCHAR2(10) NOT NULL,
@@ -31,14 +31,15 @@ CREATE TABLE gs_endereco (
 
 CREATE UNIQUE INDEX endereco__idx ON
     gs_endereco (
-        pessoa_pessoa_id
+        PESSOA_ID
     ASC );
 
 ALTER TABLE gs_endereco ADD CONSTRAINT endereco_pk PRIMARY KEY ( endereco_id );
 
 CREATE TABLE gs_medico (
+    nome               VARCHAR2(50) NOT NULL,
     crm                VARCHAR2(20) NOT NULL,
-    usuario_usuario_id NUMBER(5) NOT NULL,
+    USUARIO_ID NUMBER(5) NOT NULL,
     especialidade      VARCHAR2(50) NOT NULL,
     formacao           VARCHAR2(50) NOT NULL,
     autenticado        NUMBER(10) NOT NULL
@@ -46,14 +47,14 @@ CREATE TABLE gs_medico (
 
 CREATE UNIQUE INDEX medico__idx ON
     gs_medico (
-        usuario_usuario_id
+        USUARIO_ID
     ASC );
 
 ALTER TABLE gs_medico ADD CONSTRAINT medico_pk PRIMARY KEY ( crm );
 
 CREATE TABLE gs_pessoa (
     pessoa_id          NUMBER(5) NOT NULL,
-    usuario_usuario_id NUMBER(5) NOT NULL,
+    USUARIO_ID NUMBER(5) NOT NULL,
     nome               VARCHAR2(80) NOT NULL,
     cpf                VARCHAR2(14) NOT NULL,
     email              VARCHAR2(90) NOT NULL,
@@ -64,7 +65,7 @@ CREATE TABLE gs_pessoa (
 
 CREATE UNIQUE INDEX pessoa__idx ON
     gs_pessoa (
-        usuario_usuario_id
+        USUARIO_ID
     ASC );
 
 ALTER TABLE gs_pessoa ADD CONSTRAINT pessoa_pk PRIMARY KEY ( pessoa_id );
@@ -72,7 +73,7 @@ ALTER TABLE gs_pessoa ADD CONSTRAINT pessoa_pk PRIMARY KEY ( pessoa_id );
 CREATE TABLE gs_ticket (
     ticket_id  NUMBER(5) NOT NULL,
     assunto    VARCHAR2(40) NOT NULL,
-    comentario VARCHAR2(8000) NOT NULL
+    comentario CLOB NOT NULL
 );
 
 ALTER TABLE gs_ticket ADD CONSTRAINT ticket_pk PRIMARY KEY ( ticket_id );
@@ -92,13 +93,13 @@ ALTER TABLE gs_conteudo
         REFERENCES gs_medico ( crm );
 
 ALTER TABLE gs_endereco
-    ADD CONSTRAINT endereco_pessoa_fk FOREIGN KEY ( pessoa_pessoa_id )
+    ADD CONSTRAINT endereco_pessoa_fk FOREIGN KEY ( PESSOA_ID )
         REFERENCES gs_pessoa ( pessoa_id );
 
 ALTER TABLE gs_medico
-    ADD CONSTRAINT medico_usuario_fk FOREIGN KEY ( usuario_usuario_id )
+    ADD CONSTRAINT medico_usuario_fk FOREIGN KEY ( usuario_id )
         REFERENCES gs_usuario ( usuario_id );
 
 ALTER TABLE gs_pessoa
-    ADD CONSTRAINT pessoa_usuario_fk FOREIGN KEY ( usuario_usuario_id )
+    ADD CONSTRAINT pessoa_usuario_fk FOREIGN KEY ( usuario_id )
         REFERENCES gs_usuario ( usuario_id );

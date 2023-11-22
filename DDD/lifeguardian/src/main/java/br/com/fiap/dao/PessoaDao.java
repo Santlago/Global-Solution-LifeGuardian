@@ -22,7 +22,7 @@ public class PessoaDao {
         try {
             conexao = DBManager.getConnection();
             PreparedStatement comandoSql = null;
-            String sql = "insert into pessoa (id, nome, cpf, email, telefone, idade, genero, usuario_id)"
+            String sql = "insert into gs_pessoa (pessoa_id, nome, cpf, email, telefone, idade, genero, usuario_id)"
             + "values (?, ?, ?, ?, ?, ?, ?, ?)";
             comandoSql = conexao.prepareStatement(sql);
             comandoSql.setInt(1, pessoa.getId());
@@ -48,8 +48,8 @@ public class PessoaDao {
         conexao = DBManager.getConnection();
         PreparedStatement comandoSql = null;
         try {
-            comandoSql = conexao.prepareStatement("update pessoa set nome=?, cpf=?, email=?, telefone=?, idade=?, genero=?, usuario_id=?"
-                    + " where id=?");
+            comandoSql = conexao.prepareStatement("update gs_pessoa set nome=?, cpf=?, email=?, telefone=?, idade=?, genero=?, usuario_id=?"
+                    + " where pessoa_id=?");
             
             comandoSql.setString(1, pessoa.getNome());
             comandoSql.setString(2, pessoa.getCpf());
@@ -73,7 +73,7 @@ public class PessoaDao {
         conexao = DBManager.getConnection();
         PreparedStatement comandoSql = null;
         try {
-            comandoSql = conexao.prepareStatement("select * from pessoa");
+            comandoSql = conexao.prepareStatement("select * from gs_pessoa");
             ResultSet rs = comandoSql.executeQuery();
             while (rs.next()) {
                 Pessoa pessoa = new Pessoa();
@@ -106,7 +106,7 @@ public class PessoaDao {
         conexao = DBManager.getConnection();
         PreparedStatement comandoSql = null;
         try {
-            comandoSql = conexao.prepareStatement("select * from pessoa where id = ?");
+            comandoSql = conexao.prepareStatement("select * from gs_pessoa where pessoa_id = ?");
             comandoSql.setInt(1, id);
             ResultSet rs = comandoSql.executeQuery();
             if (rs.next()) {
@@ -137,7 +137,7 @@ public class PessoaDao {
         try {
             conexao = DBManager.getConnection();
             PreparedStatement comandoSql = null;
-            var sql = "select Max(id) from pessoa";
+            var sql = "select Max(pessoa_id) from gs_pessoa";
             comandoSql = conexao.prepareStatement(sql);
             ResultSet rs = comandoSql.executeQuery();
             if (rs.next()) {

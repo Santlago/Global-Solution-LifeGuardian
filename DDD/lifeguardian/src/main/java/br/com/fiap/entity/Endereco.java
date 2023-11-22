@@ -1,7 +1,5 @@
 package br.com.fiap.entity;
 
-import com.google.gson.annotations.SerializedName;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -10,18 +8,19 @@ public class Endereco {
     // attributes
     private int id;
     private String cep;
-    @SerializedName("logradouro")
     private String rua;
     private String numero;
     private String bairro;
-    @SerializedName("localidade")
     private String cidade;
     private String uf;
     private Pessoa pessoa;
 
     // constructors
-    
 
+    public Endereco() {
+    	
+    }
+    
     public String toString(){
         return "Endereço:" +
                 "\nCEP:" + cep +

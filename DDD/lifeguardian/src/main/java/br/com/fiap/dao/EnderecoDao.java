@@ -9,7 +9,6 @@ import java.util.List;
 
 import br.com.fiap.entity.Endereco;
 import br.com.fiap.entity.Pessoa;
-import br.com.fiap.entity.Usuario;
 
 public class EnderecoDao {
     
@@ -23,7 +22,7 @@ public class EnderecoDao {
         try {
             Connection conexao = DBManager.getConnection();
             PreparedStatement comandoSql = null;
-            String sql = "insert into endereco (id, cep, rua, numero, bairro, cidade, uf, pessoa_id)"
+            String sql = "insert into gs_endereco (endereco_id, cep, rua, numero, bairro, cidade, uf, pessoa_id)"
                     + "values (?, ?, ?, ?, ?, ?, ?, ?)";
             comandoSql = conexao.prepareStatement(sql);
             comandoSql.setInt(1, endereco.getId());
@@ -48,7 +47,7 @@ public class EnderecoDao {
         Connection conexao = DBManager.getConnection();
         try {
             PreparedStatement comandoSql = conexao.prepareStatement(
-                    "update endereco set cep=?, rua=?, numero=?, bairro=?, cidade=?, uf=?, pessoa_id=? where id=?");
+                    "update gs_endereco set cep=?, rua=?, numero=?, bairro=?, cidade=?, uf=?, pessoa_id=? where endereco_id=?");
 
             comandoSql.setString(1, endereco.getCep());
             comandoSql.setString(2, endereco.getRua());
@@ -70,7 +69,7 @@ public class EnderecoDao {
         List<Endereco> listaEnderecos = new ArrayList<>();
         Connection conexao = DBManager.getConnection();
         try {
-            PreparedStatement comandoSql = conexao.prepareStatement("select * from endereco");
+            PreparedStatement comandoSql = conexao.prepareStatement("select * from gs_endereco");
             ResultSet rs = comandoSql.executeQuery();
             while (rs.next()) {
                 Endereco endereco = new Endereco();
@@ -100,7 +99,7 @@ public class EnderecoDao {
         Endereco endereco = new Endereco();
         Connection conexao = DBManager.getConnection();
         try {
-            PreparedStatement comandoSql = conexao.prepareStatement("select * from endereco where id = ?");
+            PreparedStatement comandoSql = conexao.prepareStatement("select * from gs_endereco where endereco_id = ?");
             comandoSql.setInt(1, id);
             ResultSet rs = comandoSql.executeQuery();
             if (rs.next()) {
@@ -130,7 +129,7 @@ public class EnderecoDao {
         try {
             conexao = DBManager.getConnection();
             PreparedStatement comandoSql = null;
-            var sql = "select Max(id) from endereco";
+            var sql = "select Max(endereco_id) from gs_endereco";
             comandoSql = conexao.prepareStatement(sql);
             ResultSet rs = comandoSql.executeQuery();
             if (rs.next()) {

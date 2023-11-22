@@ -4,8 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Pessoa {
-    
-    // attributes
+	// attributes
     private int id;
     private String nome;
     private String cpf;
@@ -14,57 +13,100 @@ public class Pessoa {
     private int idade;
     private String genero;
     private Usuario usuario;
+
+    // Constructors, getters, setters, and other methods can be added as needed
     
-    // methods
-    
-    // getters and setters
+    public Pessoa() {
+    	
+    }
+
+    public Pessoa(String nome, String cpf, String email, String telefone, int idade, String genero, Usuario usuario) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+        this.idade = idade;
+        this.genero = genero;
+        this.usuario = usuario;
+    }
+
+    // Getter and setter methods for each attribute
+
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public String getCpf() {
         return cpf;
     }
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
     public String getTelefone() {
         return telefone;
     }
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
     public int getIdade() {
         return idade;
     }
+
     public void setIdade(int idade) {
         this.idade = idade;
     }
+
     public String getGenero() {
         return genero;
     }
+
     public void setGenero(String genero) {
         this.genero = genero;
     }
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
+
     public Usuario getUsuario() {
         return usuario;
     }
+
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+    public String toString() {
+        return "Pessoa{" +
+        		"id='" + id + '\'' +
+                "nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", idade=" + idade +
+                ", genero='" + genero + '\'' +
+                ", usuario=" + usuario +
+                '}';
+    }
 }

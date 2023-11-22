@@ -1,7 +1,7 @@
 package br.com.fiap.enums;
 
-public enum Status {
-    
-    ATIVO,
+public enum UsuarioAutenticado {
+
+	ATIVO,
     INATIVO
 }

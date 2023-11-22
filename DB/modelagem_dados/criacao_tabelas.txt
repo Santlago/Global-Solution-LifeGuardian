@@ -12,8 +12,8 @@
 CREATE TABLE gs_conteudo (
     conteudo_id NUMBER(5) NOT NULL,
     medico_crm  VARCHAR2(20),
-    image       VARCHAR2(80) NOT NULL,
-    text        CLOB NOT NULL
+    imagem      VARCHAR2(80) NOT NULL,
+    texto       CLOB NOT NULL
 );
 
 ALTER TABLE gs_conteudo ADD CONSTRAINT conteudo_pk PRIMARY KEY ( conteudo_id );

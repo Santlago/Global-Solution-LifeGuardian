@@ -42,7 +42,7 @@ CREATE TABLE gs_medico (
     USUARIO_ID NUMBER(5) NOT NULL,
     especialidade      VARCHAR2(50) NOT NULL,
     formacao           VARCHAR2(50) NOT NULL,
-    autenticado        NUMBER(10) NOT NULL
+    autenticado        VARCHAR2(10) NOT NULL
 );
 
 CREATE UNIQUE INDEX medico__idx ON
@@ -83,7 +83,7 @@ CREATE TABLE gs_usuario (
     email       VARCHAR2(90) NOT NULL,
     login       VARCHAR2(40) NOT NULL,
     senha       VARCHAR2(30) NOT NULL,
-    autenticado NUMBER(10) NOT NULL
+    autenticado VARCHAR2(10) NOT NULL
 );
 
 ALTER TABLE gs_usuario ADD CONSTRAINT usuario_pk PRIMARY KEY ( usuario_id );

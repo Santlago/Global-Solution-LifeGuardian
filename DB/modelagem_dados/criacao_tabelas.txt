@@ -57,7 +57,6 @@ CREATE TABLE gs_pessoa (
     USUARIO_ID NUMBER(5) NOT NULL,
     nome               VARCHAR2(80) NOT NULL,
     cpf                VARCHAR2(14) NOT NULL,
-    email              VARCHAR2(90) NOT NULL,
     telefone           VARCHAR2(20) NOT NULL,
     idade              NUMBER(3) NOT NULL,
     genero             VARCHAR2(18) NOT NULL

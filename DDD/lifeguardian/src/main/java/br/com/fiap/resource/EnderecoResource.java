@@ -39,7 +39,7 @@ public class EnderecoResource {
         UriBuilder builder = uriInfo.getAbsolutePathBuilder();
         builder.path(Integer.toString(endereco.getId()));
 
-        return Response.created(builder.build()).build();
+        return Response.created(builder.build()).entity(endereco.getId()).build();
     }
 
     // BuscarPorId

@@ -73,7 +73,7 @@ public class EnderecoDao {
             ResultSet rs = comandoSql.executeQuery();
             while (rs.next()) {
                 Endereco endereco = new Endereco();
-                endereco.setId(rs.getInt("id"));
+                endereco.setId(rs.getInt("endereco_id"));
                 endereco.setCep(rs.getString("cep"));
                 endereco.setRua(rs.getString("rua"));
                 endereco.setNumero(rs.getString("numero"));
@@ -103,7 +103,7 @@ public class EnderecoDao {
             comandoSql.setInt(1, id);
             ResultSet rs = comandoSql.executeQuery();
             if (rs.next()) {
-                endereco.setId(rs.getInt("id"));
+                endereco.setId(rs.getInt("endereco_id"));
                 endereco.setCep(rs.getString("cep"));
                 endereco.setRua(rs.getString("rua"));
                 endereco.setNumero(rs.getString("numero"));

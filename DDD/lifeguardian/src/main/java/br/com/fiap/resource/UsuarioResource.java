@@ -35,13 +35,15 @@ public class UsuarioResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrar(Usuario usuario, @Context UriInfo uriInfo) {
-		usuarioBo = new UsuarioBo();
-		usuarioBo.cadastrar(usuario);
-		UriBuilder builder = uriInfo.getAbsolutePathBuilder();
-		builder.path(Integer.toString(usuario.getId()));
-		
-		return Response.created(builder.build()).build();
+	    usuarioBo = new UsuarioBo();
+	    usuarioBo.cadastrar(usuario);
+	    UriBuilder builder = uriInfo.getAbsolutePathBuilder();
+	    builder.path(Integer.toString(usuario.getId()));
+
+	    // Return the usuario.id along with the created response
+	    return Response.created(builder.build()).entity(usuario.getId()).build();
 	}
+
 	
 	// BuscarPorId
 	@GET

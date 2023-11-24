@@ -8,7 +8,6 @@ public class Pessoa {
     private int id;
     private String nome;
     private String cpf;
-    private String email;
     private String telefone;
     private int idade;
     private String genero;
@@ -20,10 +19,9 @@ public class Pessoa {
     	
     }
 
-    public Pessoa(String nome, String cpf, String email, String telefone, int idade, String genero, Usuario usuario) {
+    public Pessoa(String nome, String cpf, String telefone, int idade, String genero, Usuario usuario) {
         this.nome = nome;
         this.cpf = cpf;
-        this.email = email;
         this.telefone = telefone;
         this.idade = idade;
         this.genero = genero;
@@ -47,15 +45,7 @@ public class Pessoa {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+    
     public String getTelefone() {
         return telefone;
     }
@@ -102,7 +92,6 @@ public class Pessoa {
         		"id='" + id + '\'' +
                 "nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
-                ", email='" + email + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", idade=" + idade +
                 ", genero='" + genero + '\'' +

@@ -1,5 +1,9 @@
 package br.com.fiap.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+
 public class Conteudo {
     private int id;
     private String imagem;
@@ -12,10 +16,10 @@ public class Conteudo {
     	
     }
     
-    public Conteudo(int id, String image, String text, Medico autor) {
+    public Conteudo(int id, String imagem, String texto, Medico autor) {
         this.id = id;
-        this.imagem = image;
-        this.texto = text;
+        this.imagem = imagem;
+        this.texto = texto;
         this.autor = autor;
     }
     
@@ -24,8 +28,8 @@ public class Conteudo {
     public String toString() {
         return "Conteudo{" +
                 "id=" + id +
-                ", image='" + imagem + '\'' +
-                ", text='" + texto + '\'' +
+                ", imagem='" + imagem + '\'' +
+                ", texto='" + texto + '\'' +
                 ", autor=" + autor +
                 '}';
     }
@@ -40,20 +44,20 @@ public class Conteudo {
         this.id = id;
     }
 
-    public String getImage() {
+    public String getImagem() {
         return imagem;
     }
 
-    public void setImage(String image) {
-        this.imagem = image;
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
-    public String getText() {
+    public String getTexto() {
         return texto;
     }
 
-    public void setText(String text) {
-        this.texto = text;
+    public void setTexto(String texto) {
+        this.texto = texto;
     }
 
     public Medico getAutor() {

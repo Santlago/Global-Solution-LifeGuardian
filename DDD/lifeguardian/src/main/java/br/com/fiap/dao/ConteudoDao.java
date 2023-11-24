@@ -22,8 +22,8 @@ public class ConteudoDao {
         comandoSql = conexao.prepareStatement(sql);
         comandoSql.setInt(1, conteudo.getId());
         comandoSql.setString(2, conteudo.getAutor().getCrm());
-        comandoSql.setString(3, conteudo.getImage());
-        comandoSql.setString(4, conteudo.getText());
+        comandoSql.setString(3, conteudo.getImagem());
+        comandoSql.setString(4, conteudo.getTexto());
         comandoSql.executeUpdate();
         conexao.close();
         comandoSql.close();
@@ -33,12 +33,12 @@ public class ConteudoDao {
         conexao = DBManager.getConnection();
         PreparedStatement comandoSql = null;
         try {
-            comandoSql = conexao.prepareStatement("update gs_conteudo set medico_crm=?imagem=?, texto=?"
+            comandoSql = conexao.prepareStatement("update gs_conteudo set medico_crm=?, imagem=?, texto=?"
                         + " where conteudo_id=?");
             
             comandoSql.setString(1, conteudo.getAutor().getCrm());
-            comandoSql.setString(2, conteudo.getImage());
-            comandoSql.setString(3, conteudo.getText());
+            comandoSql.setString(2, conteudo.getImagem());
+            comandoSql.setString(3, conteudo.getTexto());
             comandoSql.setInt(4, conteudo.getId());
             comandoSql.executeUpdate();
             conexao.close();
@@ -61,8 +61,8 @@ public class ConteudoDao {
                 String autorId = rs.getString(2);
                 Medico autor = new MedicoDao().buscarMedicoPorCrm(autorId);
                 conteudo.setAutor(autor);
-                conteudo.setImage(rs.getString(3));
-                conteudo.setText(rs.getString(4));
+                conteudo.setImagem(rs.getString(3));
+                conteudo.setTexto(rs.getString(4));
                 
                 listaConteudos.add(conteudo);
             }
@@ -85,8 +85,8 @@ public class ConteudoDao {
             ResultSet rs = comandoSql.executeQuery();
             if (rs.next()) {
                 conteudo.setId(rs.getInt(1));
-                conteudo.setImage(rs.getString(2));
-                conteudo.setText(rs.getString(3));
+                conteudo.setImagem(rs.getString(2));
+                conteudo.setTexto(rs.getString(3));
                 String autorId = rs.getString(2);
                 Medico autor = new MedicoDao().buscarMedicoPorCrm(autorId);
                 conteudo.setAutor(autor);

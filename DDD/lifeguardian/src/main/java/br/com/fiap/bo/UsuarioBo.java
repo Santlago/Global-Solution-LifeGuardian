@@ -2,6 +2,8 @@ package br.com.fiap.bo;
 
 import br.com.fiap.dao.UsuarioDao;
 import br.com.fiap.entity.Usuario;
+import br.com.fiap.enums.UsuarioAutenticado;
+import br.com.fiap.exception.AuthenticationException;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -16,8 +18,13 @@ public class UsuarioBo {
     public void cadastrar(Usuario usuario) {
         try {
             if (isValidPassword(usuario.getSenha())) {
-                usuario.setId(usuarioDao.buscarId());
-                usuarioDao.inserir(usuario);
+                if (usuario.getAutenticado() == UsuarioAutenticado.ATIVO) {
+                    usuario.setId(usuarioDao.buscarId());
+                    usuarioDao.inserir(usuario);
+                } else {
+                    // Throw AuthenticationException for inactive users
+                    throw new AuthenticationException("Cannot register an inactive user.");
+                }
             } else {
                 // Handle password validation failure
                 System.out.println("Password does not meet the criteria: at least 6 characters, 1 letter, and 1 number.");

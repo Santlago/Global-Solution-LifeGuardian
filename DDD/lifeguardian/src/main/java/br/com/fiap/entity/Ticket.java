@@ -1,5 +1,9 @@
 package br.com.fiap.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+
 public class Ticket {
     private int id;
     private String assunto;

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fiap.entity.Medico;
+import br.com.fiap.entity.Usuario;
 import br.com.fiap.enums.MedicoAutenticado;
 
 public class MedicoDao {
@@ -17,14 +18,15 @@ public class MedicoDao {
     public void inserir(Medico medico) throws SQLException {
         conexao = DBManager.getConnection();
         PreparedStatement comandoSql = null;
-        String sql = "insert into gs_medico (crm, nome, especialidade, formacao, autenticado)"
-                + "values (?, ?, ?, ?, ?)";
+        String sql = "insert into gs_medico (nome, crm, usuario_id, especialidade, formacao, autenticado)"
+                + "values (?, ?, ?, ?, ?, ?)";
         comandoSql = conexao.prepareStatement(sql);
-        comandoSql.setString(1, medico.getCrm());
-        comandoSql.setString(2, medico.getNome());
-        comandoSql.setString(3, medico.getEspecialidade());
-        comandoSql.setString(4, medico.getFormacao());
-        comandoSql.setString(5, medico.getAutenticado().toString());
+        comandoSql.setString(1, medico.getNome());
+        comandoSql.setString(2, medico.getCrm());
+        comandoSql.setInt(3, medico.getUsuario().getId());
+        comandoSql.setString(4, medico.getEspecialidade());
+        comandoSql.setString(5, medico.getFormacao());
+        comandoSql.setString(6, medico.getAutenticado().toString());
         comandoSql.executeUpdate();
         conexao.close();
         comandoSql.close();
@@ -35,13 +37,14 @@ public class MedicoDao {
         PreparedStatement comandoSql = null;
         try {
             comandoSql = conexao.prepareStatement(
-                    "update gs_medico set nome=?, especialidade=?, formacao=?, autenticado=?" + " where crm=?");
+                    "update gs_medico set nome=?, especialidade=?, formacao=?, autenticado=?, usuario_id=?" + " where crm=?");
 
-            comandoSql.setString(1, medico.getNome());
+            comandoSql.setString(1, medico.getNome());            
             comandoSql.setString(2, medico.getEspecialidade());
             comandoSql.setString(3, medico.getFormacao());
             comandoSql.setString(4, medico.getAutenticado().toString());
-            comandoSql.setString(5, medico.getCrm());
+            comandoSql.setInt(5, medico.getUsuario().getId());
+            comandoSql.setString(6, medico.getCrm());
             comandoSql.executeUpdate();
             conexao.close();
             comandoSql.close();
@@ -59,11 +62,15 @@ public class MedicoDao {
             ResultSet rs = comandoSql.executeQuery();
             while (rs.next()) {
                 Medico medico = new Medico();
-                medico.setCrm(rs.getString(1));
-                medico.setNome(rs.getString(2));
-                medico.setEspecialidade(rs.getString(3));
-                medico.setFormacao(rs.getString(4));
-                String autenticado = rs.getString(5);
+                medico.setNome(rs.getString(1));
+                medico.setCrm(rs.getString(2));
+                UsuarioDao usuarioDao = new UsuarioDao();
+                int usuarioId = rs.getInt(3);
+                Usuario usuario = usuarioDao.buscarUsuarioPorId(usuarioId);
+                medico.setUsuario(usuario);
+                medico.setEspecialidade(rs.getString(4));
+                medico.setFormacao(rs.getString(5));
+                String autenticado = rs.getString(6);
                 MedicoAutenticado autenticadoEnum = MedicoAutenticado.valueOf(autenticado);
                 medico.setAutenticado(autenticadoEnum);
                 listaMedicos.add(medico);
@@ -86,13 +93,18 @@ public class MedicoDao {
             comandoSql.setString(1, crm);
             ResultSet rs = comandoSql.executeQuery();
             if (rs.next()) {
-                medico.setCrm(rs.getString(1));
-                medico.setNome(rs.getString(2));
-                medico.setEspecialidade(rs.getString(3));
-                medico.setFormacao(rs.getString(4));
-                String autenticado = rs.getString(5);
+            	medico.setNome(rs.getString(1));
+                medico.setCrm(rs.getString(2));
+                UsuarioDao usuarioDao = new UsuarioDao();
+                int usuarioId = rs.getInt(3);
+                Usuario usuario = usuarioDao.buscarUsuarioPorId(usuarioId);
+                medico.setUsuario(usuario);
+                medico.setEspecialidade(rs.getString(4));
+                medico.setFormacao(rs.getString(5));
+                String autenticado = rs.getString(6);
                 MedicoAutenticado autenticadoEnum = MedicoAutenticado.valueOf(autenticado);
                 medico.setAutenticado(autenticadoEnum);
+                
             }
             conexao.close();
             comandoSql.close();

@@ -2,6 +2,10 @@ package br.com.fiap.entity;
 
 import br.com.fiap.enums.MedicoAutenticado;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+
 public class Medico {
 
 	private String nome;

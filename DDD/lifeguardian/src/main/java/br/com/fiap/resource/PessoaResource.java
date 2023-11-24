@@ -39,7 +39,7 @@ public class PessoaResource {
 		UriBuilder builder = uriInfo.getAbsolutePathBuilder();
 		builder.path(Integer.toString(pessoa.getId()));
 		
-		return Response.created(builder.build()).build();
+		return Response.created(builder.build()).entity(pessoa.getId()).build();
 	}
 	
 	// BuscarPorId

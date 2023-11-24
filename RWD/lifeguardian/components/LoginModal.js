@@ -13,7 +13,7 @@ const customStyles = {
   },
 };
 
-const LoginModal = ({ isOpen, onRequestClose }) => {
+const LoginModal = ({ isOpen, onRequestClose, onSuccessfulLogin }) => {
   const [loginData, setLoginData] = useState({
     login: '',
     senha: '',
@@ -55,6 +55,9 @@ const LoginModal = ({ isOpen, onRequestClose }) => {
         
         // Show a positive alert for successful login
         alert('Login efetuado com sucesso!');
+        
+        // Call the onSuccessfulLogin prop with user data
+        onSuccessfulLogin(matchingUser);
         
         // Close the modal after successful login
         onRequestClose();

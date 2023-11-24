@@ -8,6 +8,7 @@ import CadastroModal from './CadastroModal';
 const Header = () => {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
   const [isCadastroModalOpen, setCadastroModalOpen] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   const openLoginModal = () => {
     setLoginModalOpen(true);
@@ -25,15 +26,35 @@ const Header = () => {
     setCadastroModalOpen(false);
   };
 
+  const handleSuccessfulLogin = (userData) => {
+    setLoggedInUser(userData);
+  };
+
+  const handleLogout = () => {
+    setLoggedInUser(null);
+  };
+
   return (
     <header>
       <nav className={styles.nav}>
         <ul>
-          {/* Botão de login que abre o modal */}
-          <li><a href="#" onClick={openLoginModal}>Login</a></li>
+          {/* Conditional rendering based on login state */}
+          {loggedInUser ? (
+            <>
+              <li>
+                <span>{`Bem-vindo, ${loggedInUser.login}!`}</span>
+                <button onClick={handleLogout}>Logout</button>
+              </li>
+            </>
+          ) : (
+            <>
+              {/* Botão de login que abre o modal */}
+              <li><a href="#" onClick={openLoginModal}>Login</a></li>
 
-          {/* Botão de cadastro que abre o modal de cadastro */}
-          <li><a href="#" onClick={openCadastroModal}>Cadastro</a></li>
+              {/* Botão de cadastro que abre o modal de cadastro */}
+              <li><a href="#" onClick={openCadastroModal}>Cadastro</a></li>
+            </>
+          )}
 
           {/* Link para a Página Inicial */}
           <li>
@@ -56,6 +77,7 @@ const Header = () => {
       <LoginModal
         isOpen={isLoginModalOpen}
         onRequestClose={closeLoginModal}
+        onSuccessfulLogin={handleSuccessfulLogin}
       />
 
       {/* Modal de Cadastro */}

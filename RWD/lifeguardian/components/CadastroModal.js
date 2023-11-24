@@ -188,7 +188,7 @@ const CadastroModal = ({ isOpen, onRequestClose }) => {
       if (!usuarioResponse.ok) {
         throw new Error('Erro ao cadastrar usuário');
       }
-  
+      console.log(usuarioResponse)
       const usuarioDataResponse = await usuarioResponse.json();
       console.log(usuarioDataResponse)
       console.log('Resposta da API (Usuario):', usuarioDataResponse);

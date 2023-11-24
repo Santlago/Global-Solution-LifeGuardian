@@ -1,0 +1,189 @@
+
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  height: 100vh;
+  
+}
+
+.Containerpage{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.Containerpage p{
+  font-size: 17 0%;
+  
+}
+.Containerpage h2{
+  font-size: 200%;
+  
+}
+
+
+
+.sessão1,
+.sessão2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 20px;
+  padding: 40px;
+}
+
+.sessão1 h2,
+.sessão2 h2 {
+  color: #a31621;
+  margin-bottom: 10px;
+}
+
+.sessão1,
+.sessão2  p{
+  color: grey;
+
+
+}
+
+@media (min-width: 768px) {
+  .Container {
+    flex-direction: row;
+  }
+
+ 
+}
+
+.container {
+  background-image: url('../public/kids.jpg') ;
+  position: relative;
+  height: 600px; 
+  color: #fff; 
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+.banner {
+  position: relative;
+  height: 600px; 
+  color: #fff; 
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.banner h3,
+.banner h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  
+}
+
+.banner h3 {
+  display: inline-block; 
+  background-color: #f49901; 
+  font-size: 2.0rem; 
+  padding: 10px; 
+  margin: 0; 
+}
+
+.banner h1 {
+  color: #a31621;
+  font-size: 5.0rem;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.5); 
+  margin-top: 10px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.section_limit {
+  display: flex;
+  justify-content: center;
+  padding: 70px;
+}
+
+.modelo_3 {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.quadros {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 0 auto; 
+}
+
+.quadro {
+  background-color: #f49901;
+
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  width: 280px; 
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  h1,
+  h2 {
+    margin: 20px; 
+    text-align: center;
+    color: #fff;
+  }
+
+
+     
+    
+}
+.parada{
+  height: 100;
+}
+.emergencias{
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+  font-size: large;
+  color: #a31621;
+  
+
+}
+.emergencia img{
+  
+  padding: 15px;
+  width: 300px;
+  height: 200px;
+}

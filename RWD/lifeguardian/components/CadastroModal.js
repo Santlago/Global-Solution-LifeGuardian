@@ -1,117 +1,3 @@
-// ---------------------------------------------ANTIGO------------------------------------------------
-// import React, { useState } from 'react';
-// import Modal from 'react-modal';
-// import styles from './CadastroModal.module.scss';
-// import CadastroMedicoModal from './CadastroMedicoModal';
-
-// const customStyles = {
-//   content: {
-//     top: '50%',
-//     left: '50%',
-//     right: 'auto',
-//     bottom: 'auto',
-//     marginRight: '-50%',
-//     transform: 'translate(-50%, -50%)',
-//   },
-// };
-
-// const CadastroModal = ({ isOpen, onRequestClose }) => {
-//   const [email, setEmail] = useState('');
-//   const [senha, setSenha] = useState('');
-//   const [id, setId] = useState('');
-
-//   const [isCadastroMedicoModalOpen, setCadastroMedicoModalOpen] = useState(false);
-
-//   const openCadastroMedicoModal = () => {
-//     setCadastroMedicoModalOpen(true);
-//   };
-
-//   const closeCadastroMedicoModal = () => {
-//     setCadastroMedicoModalOpen(false);
-//   };
-
-//   const cadastrarUsuario = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       const response = await fetch('/api/cadastro', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({ email, senha, id }),
-//       });
-
-//       if (!response.ok) {
-//         throw new Error('Erro ao cadastrar usuário');
-//       }
-
-//       const data = await response.json();
-//       console.log('Resposta da API:', data);
-//       // Aqui você pode atualizar o estado da aplicação conforme necessário
-
-//       // Feche o modal após o cadastro bem-sucedido
-//       onRequestClose();
-//     } catch (error) {
-//       // Lide com erros, por exemplo, exibindo uma mensagem de erro
-//       console.error('Erro ao cadastrar usuário:', error.message);
-//     }
-//   };
-
-//   return (
-//     <Modal
-//       isOpen={isOpen}
-//       onRequestClose={onRequestClose}
-//       style={customStyles}
-//       contentLabel="Cadastro Modal"
-//     >
-//       <div className={styles.modal}>
-//         <h2>Cadastro</h2>
-//         <form className={styles.form} onSubmit={cadastrarUsuario}>
-//           <label>Email:</label>
-//           <input
-//             type="email"
-//             placeholder="Digite seu e-mail"
-//             value={email}
-//             onChange={(e) => setEmail(e.target.value)}
-//           />
-
-//           <label>Senha:</label>
-//           <input
-//             type="password"
-//             placeholder="Digite sua senha"
-//             value={senha}
-//             onChange={(e) => setSenha(e.target.value)}
-//           />
-
-//           <label>ID:</label>
-//           <input
-//             type="text"
-//             placeholder="Digite seu ID"
-//             value={id}
-//             onChange={(e) => setId(e.target.value)}
-//           />
-
-//           <button type="submit">Enviar</button>
-//         </form>
-
-//         {/* Botão para abrir o modal de cadastro de médico */}
-//         <button onClick={openCadastroMedicoModal} className={styles.cadastroMedicoButton}>
-//           Cadastro Médico Especializado
-//         </button>
-//       </div>
-
-//       {/* Modal de Cadastro de Médico Especializado */}
-//       <CadastroMedicoModal
-//         isOpen={isCadastroMedicoModalOpen}
-//         onRequestClose={closeCadastroMedicoModal}
-//       />
-//     </Modal>
-//   );
-// };
-
-// export default CadastroModal;
-
 //------------------------------------------------------------------NOVO----------------------------------------------------------
 import React, { useState } from 'react';
 import Modal from 'react-modal';
@@ -150,9 +36,12 @@ const CadastroModal = ({ isOpen, onRequestClose }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
   
-    setUsuario((prevUsuario) => ({ ...prevUsuario, [name]: value }));
-    setPessoa((prevPessoa) => ({ ...prevPessoa, [name]: value }));
-    setEndereco((prevEndereco) => ({ ...prevEndereco, [name]: value }));
+    // Convert "idade" to an integer if the name is "idade"
+    const parsedValue = name === "idade" ? parseInt(value, 10) : value;
+  
+    setUsuario((prevUsuario) => ({ ...prevUsuario, [name]: parsedValue }));
+    setPessoa((prevPessoa) => ({ ...prevPessoa, [name]: parsedValue }));
+    setEndereco((prevEndereco) => ({ ...prevEndereco, [name]: parsedValue }));
   };  
 
   const [isCadastroMedicoModalOpen, setCadastroMedicoModalOpen] = useState(false);
@@ -184,15 +73,15 @@ const CadastroModal = ({ isOpen, onRequestClose }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(usuarioData),
       });
-  
-      if (!usuarioResponse.ok) {
-        throw new Error('Erro ao cadastrar usuário');
-      }
-      console.log(usuarioResponse)
-      const usuarioDataResponse = await usuarioResponse.json();
-      console.log(usuarioDataResponse)
-      console.log('Resposta da API (Usuario):', usuarioDataResponse);
-  
+
+      const usuarioResponseData = await usuarioResponse.json();
+      console.log("usuarioResponseData:", usuarioResponseData)
+      const usuarioId = usuarioResponseData;
+    
+      // Now you can use usuarioId as needed
+      console.log('Usuario ID:', usuarioId);
+
+
       // Create a new object with only the necessary properties for /pessoa endpoint
       const pessoaData = {
         nome: pessoa.nome,
@@ -200,9 +89,14 @@ const CadastroModal = ({ isOpen, onRequestClose }) => {
         telefone: pessoa.telefone,
         idade: pessoa.idade,
         genero: pessoa.genero,
-        usuario: usuarioDataResponse,
+        usuario: {
+          id: usuarioId,
+          email: usuario.email,
+          login: usuario.login,
+          senha: usuario.senha,
+          autenticado: 'ATIVO'
+        }
       };
-      console.log(pessoaData)
   
       // Step 2: Post to /pessoa
       const pessoaResponse = await fetch('http://localhost:13895/br.com.fiap/rest/pessoa', {
@@ -211,18 +105,32 @@ const CadastroModal = ({ isOpen, onRequestClose }) => {
         body: JSON.stringify(pessoaData),
       });
   
-      if (!pessoaResponse.ok) {
-        throw new Error('Erro ao cadastrar pessoa');
-      }
-  
-      const pessoaDataResponse = await pessoaResponse.json();
-      console.log('Resposta da API (Pessoa):', pessoaDataResponse);
+      const pessoaResponseData = await pessoaResponse.json();
+      console.log("pessoaResponseData:", pessoaResponseData)
+      const pessoaId = pessoaResponseData;
+
+      // Now you can use usuarioId as needed
+      console.log('Pessoa ID:', pessoaId);
   
       // Create a new object with only the necessary properties for /endereco endpoint
       const enderecoData = {
         cep: endereco.cep,
         numero: endereco.numero,
-        pessoa: pessoaDataResponse,
+        pessoa: {
+          id: pessoaId,
+          nome: pessoa.nome,
+          cpf: pessoa.cpf,
+          telefone: pessoa.telefone,
+          idade: pessoa.idade,
+          genero: pessoa.genero,
+          usuario: {
+            id: usuarioId,
+            email: usuario.email,
+            login: usuario.login,
+            senha: usuario.senha,
+            autenticado: 'ATIVO'
+          }
+        }
       };
   
       // Step 3: Post to /endereco
@@ -232,12 +140,11 @@ const CadastroModal = ({ isOpen, onRequestClose }) => {
         body: JSON.stringify(enderecoData),
       });
   
-      if (!enderecoResponse.ok) {
-        throw new Error('Erro ao cadastrar endereco');
-      }
   
-      const enderecoDataResponse = await enderecoResponse.json();
-      console.log('Resposta da API (Endereco):', enderecoDataResponse);
+      const enderecoResponseData = await enderecoResponse.json();
+      console.log("enderecoResponseData:", enderecoResponseData)
+      const enderecoId = enderecoResponseData;
+      console.log("enderecoId:", enderecoId)
   
       // All requests successful, you can perform additional actions if needed
   
